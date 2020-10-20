@@ -23,21 +23,15 @@ public class UserController {
     @PostMapping("/create")
     public UserDto greeting(@RequestBody CreateUserRequestVo createUserRequestVo) {
 
-        String id1 = createUserRequestVo.getId1();
-        String id2 = createUserRequestVo.getId2();
+        User targetUser = modelMapper.map(createUserRequestVo, User.class);
 
-        List<User> results = userRepository.findById1AndId2(id1, id2);
+        List<User> results = userRepository.findById1AndId2(targetUser.getId1(), targetUser.getId2());
 
         if(results.size() > 0){
             return modelMapper.map(results.get(0), UserDto.class);
         }else{
-            User user = new User();
-            user.setId1(createUserRequestVo.getId1());
-            user.setId2(createUserRequestVo.getId2());
-
-            userRepository.save(user);
-
-            return modelMapper.map(user, UserDto.class);
+            userRepository.save(targetUser);
+            return modelMapper.map(targetUser, UserDto.class);
         }
     }
 
