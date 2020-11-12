@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.TestDao">
+
+	<!--模板关联活动-->
+	 <select id="getUserId" resultType="com.example.demo.entity.Test">
+	  select * from onetest where id_one=${id_one} and id_two=${id_one}
+	</select>
+
+</mapper>
