@@ -4,7 +4,7 @@
 
 	<!--模板关联活动-->
 	 <select id="getUserId" resultType="com.example.demo.entity.Test">
-	  select * from onetest where id_one=${id_one} and id_two=${id_one}
+	  select id_one,id_two,userID  from onetest where id_one=${id_one} and id_two=${id_one}
 	</select>
 
 </mapper>
